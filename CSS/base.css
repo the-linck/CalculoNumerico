@@ -1,0 +1,38 @@
+body {
+    background-color: #fafafa;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+body,
+h1, h2, h3, h4,
+figure > figcaption, .caption  {
+    margin: 0;
+    padding-left: 5px;
+}
+
+h1 {
+    font-size: 46px;
+    font-weight: 200;
+    line-height: 56px;
+}
+
+h2 {
+    font-size: 34px;
+    font-weight: 200;
+    line-height: 40px;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 28px;
+}
+
+figure > figcaption, .caption {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    padding-left: 0;
+}
