@@ -15,25 +15,39 @@
                  * @description Cria um objeto com os valores informados complementados por valores padrão.
                  * @param {Object} values Valores que devem sobrescrever os padrões.
                  * @param {Object} [defaults] Valores padrões.
-                 * @returns {Object} Objeto com valores informados sobrescrevendo padrões.
+                 * @param {Boolean} [override=false] Se valores padrão devem ser sobrecritos.
+                 * @returns {Object} Objeto com valores informados complementando os padrões.
                  */ 
-                "copyObject": function copyObject(values, defaults) {
+                "copy": function copyObject(values, defaults, override) {
                     var result = {};
                     if (values == null) {
                         if (defaults != null) for (var field in defaults) {
                             result[field] = defaults[field];
                         }
                     } else {
-                        for (var field in values) {
-                            result[field] = values[field];
-                        }
                         if (defaults != null) for (var field in defaults) {
-                            if (!result.hasOwnProperty(field)) {
-                                result[field] = defaults[field];
+                            result[field] = defaults[field];
+                        }
+                        for (var field in values) {
+                            if (!result.hasOwnProperty(field) || override) {
+                                result[field] = values[field];
                             }
                         }
                     }
                     return result;
+                },
+                /**
+                 * @description Adiciona valores a um objeto.
+                 * @param {Object} current Objeto atual.
+                 * @param {Object} extensions Objeto com valores a serem adicionados.
+                 * @param {Boolean} [override=false] Se valores atuais devem ser sobrecritos.
+                 */ 
+                "extend": function extendObject(current, extensions, override) {
+                    for (var field in extensions) {
+                        if (!current.hasOwnProperty(field) || override) {
+                            current[field] = extensions[field];
+                        }
+                    }
                 }
             };
         }
